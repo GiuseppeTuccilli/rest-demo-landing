@@ -1,0 +1,42 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+nav {
+  height: 5rem;
+  background-color: rgba(45, 45, 45, 0.612);
+
+  transition: 0.5s ease;
+  overflow-y: hidden;
+}
+nav a {
+  text-decoration: none;
+}
+
+.navTog {
+  height: 4rem;
+  width: 4rem;
+}
+
+.maincontainer {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.p6rem {
+  padding-top: 6rem;
+}
+
+.h15rem {
+  height: 15rem;
+}
+
+.homeBackImg {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://placecats.com/2000/1000");
+  height: 40rem;
+  background-repeat: unset;
+  background-size: cover;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
