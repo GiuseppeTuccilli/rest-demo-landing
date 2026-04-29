@@ -42,29 +42,45 @@ const MyNav = function () {
         <div className="d-flex justify-content-end">
           <button
             onClick={togle}
-            className="d-lg-none btn bg-dark text-light fs-4 navTog p-0"
+            className="d-lg-none btn bg-dark text-light fs-4 navTog p-0 border border-1 border-light"
           >
             <i className="bi bi-list"></i>
           </button>
         </div>
         <ul className="list-unstyled d-lg-flex justify-content-evenly align-items-center m-0 w-100">
           <li className="text-center my-2 my-lg-0">
-            <Link to={"/"} className="fs-5">
+            <Link
+              to={"/"}
+              className={"fs-4 " + (location.pathname === "/" && "active")}
+            >
               Home
             </Link>
           </li>
           <li className="text-center my-2 my-lg-0">
-            <Link to={"/Products"} className="fs-5">
+            <Link
+              to={"/Products"}
+              className={
+                "fs-4 " + (location.pathname === "/Products" && "active")
+              }
+            >
               Products
             </Link>
           </li>
           <li className="text-center my-2 my-lg-0">
-            <Link to={"/Contact"} className="fs-5">
+            <Link
+              to={"/Contact"}
+              className={
+                "fs-4 " + (location.pathname === "/Contact" && "active")
+              }
+            >
               Contact Us
             </Link>
           </li>
           <li className="text-center my-2 my-lg-0">
-            <Link to={"/About"} className="fs-5">
+            <Link
+              to={"/About"}
+              className={"fs-4 " + (location.pathname === "/About" && "active")}
+            >
               About
             </Link>
           </li>

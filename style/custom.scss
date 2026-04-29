@@ -10,6 +10,20 @@ nav {
 }
 nav a {
   text-decoration: none;
+  transition: 0.5s ease;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transform: background-size 0.3s ease;
+}
+
+nav a:hover {
+  background-size: 100% 2px;
+}
+
+.active {
+  background-size: 100% 2px;
 }
 
 .navTog {
@@ -22,7 +36,7 @@ nav a {
 }
 
 .h15rem {
-  height: 15rem;
+  height: 16rem;
 }
 
 .homeBackImg {
