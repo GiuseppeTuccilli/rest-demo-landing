@@ -3,7 +3,6 @@
 
 nav {
   height: 5rem;
-  background-color: rgba(45, 45, 45, 0.612);
 
   transition: 0.5s ease;
   overflow-y: hidden;
@@ -37,6 +36,10 @@ nav a:hover {
 
 .h15rem {
   height: 16rem;
+}
+
+.backTransparent {
+  background-color: rgba(45, 45, 45, 0.612);
 }
 
 .homeBackImg {

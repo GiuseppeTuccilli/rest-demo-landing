@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const MyNav = function () {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [scrolledBy, setScrolledBy] = useState(0);
+  const [isTransparent, setIsTransparent] = useState(false);
 
   const location = useLocation();
 
@@ -13,7 +13,25 @@ const MyNav = function () {
 
   useEffect(() => {
     const handlescroll = () => {
-      setScrolledBy(window.scrollY);
+      const backImg = document.getElementsByClassName("homeBackImg");
+      if (backImg.length > 0) {
+        const height = backImg[0].clientHeight;
+
+        let navHeight = 0;
+        if (isExpanded) {
+          navHeight = 10;
+        } else {
+          navHeight = 100;
+        }
+
+        if (window.scrollY > height - navHeight) {
+          setIsTransparent(false);
+        } else {
+          setIsTransparent(true);
+        }
+      } else {
+        setIsTransparent(false);
+      }
     };
 
     window.addEventListener("scroll", handlescroll);
@@ -27,16 +45,8 @@ const MyNav = function () {
     <>
       <nav
         className={
-          "p-2 fixed-top d-lg-flex align-items-center " +
-          (isExpanded && " h15rem ") +
-          (scrolledBy > 500 &&
-            location.pathname === "/" &&
-            !isExpanded &&
-            " bg-dark ") +
-          (scrolledBy > 390 &&
-            location.pathname === "/" &&
-            isExpanded &&
-            " bg-dark")
+          "p-2 fixed-top d-lg-flex align-items-center" +
+          (isTransparent ? " backTransparent" : " bg-dark")
         }
       >
         <div className="d-flex justify-content-end">
