@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const MyNav = function () {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isTransparent, setIsTransparent] = useState(false);
+
+  const nav = useRef(null);
 
   const location = useLocation();
 
@@ -17,14 +19,7 @@ const MyNav = function () {
       if (backImg.length > 0) {
         const height = backImg[0].clientHeight;
 
-        let navHeight = 0;
-        if (isExpanded) {
-          navHeight = 10;
-        } else {
-          navHeight = 100;
-        }
-
-        if (window.scrollY > height - navHeight) {
+        if (window.scrollY > height - nav.current.offsetHeight - 30) {
           setIsTransparent(false);
         } else {
           setIsTransparent(true);
@@ -44,9 +39,11 @@ const MyNav = function () {
   return (
     <>
       <nav
+        ref={nav}
         className={
           "p-2 fixed-top d-lg-flex align-items-center" +
-          (isTransparent ? " backTransparent" : " bg-dark")
+          (isTransparent ? " backTransparent " : " bg-dark ") +
+          (isExpanded && " h15rem ")
         }
       >
         <div className="d-flex justify-content-end">
