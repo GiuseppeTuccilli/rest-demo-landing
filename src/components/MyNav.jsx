@@ -1,15 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const MyNav = function (props) {
+const MyNav = function () {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [scrolledBy, setScrolledBy] = useState(0);
 
   const location = useLocation();
-  let position = props.position;
 
   const togle = () => {
     setIsExpanded(!isExpanded);
   };
+
+  useEffect(() => {
+    const handlescroll = () => {
+      setScrolledBy(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handlescroll);
+
+    return () => {
+      window.removeEventListener("scroll", handlescroll);
+    };
+  }, []);
 
   return (
     <>
@@ -17,11 +29,11 @@ const MyNav = function (props) {
         className={
           "p-2 fixed-top d-lg-flex align-items-center " +
           (isExpanded && " h15rem ") +
-          (position > 500 &&
+          (scrolledBy > 500 &&
             location.pathname === "/" &&
             !isExpanded &&
             " bg-dark ") +
-          (position > 390 &&
+          (scrolledBy > 390 &&
             location.pathname === "/" &&
             isExpanded &&
             " bg-dark")
